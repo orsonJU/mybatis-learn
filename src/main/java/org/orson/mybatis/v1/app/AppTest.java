@@ -1,6 +1,7 @@
 package org.orson.mybatis.v1.app;
 
 import org.orson.mybatis.v1.app.configuration.OrsonConfiguration;
+import org.orson.mybatis.v1.app.mapper.PersonMapper;
 import org.orson.mybatis.v1.app.session.OrsonSQLSessionImpl;
 
 import java.util.List;

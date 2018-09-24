@@ -13,7 +13,7 @@ public class OrsonConfiguration {
 
 
     static {
-        sqlMapping.put("interface org.orson.mybatis.v1.app.PersonMapper.findPersonByName", "select id, name, age from person where name like ?");
+        sqlMapping.put("interface org.orson.mybatis.v1.app.mapper.PersonMapper.findPersonByName", "select id, name, age from person where name like ?");
 
     }
 
