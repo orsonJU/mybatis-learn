@@ -1,6 +1,5 @@
 package org.orson.mybatis.v1.app.mapper;
 
-import org.apache.ibatis.annotations.Param;
 import org.orson.mybatis.v1.app.Person;
 
 import java.util.List;
@@ -10,5 +9,5 @@ import java.util.List;
  */
 public interface PersonMapper {
 
-    public List<Person> findPersonByName(@Param("name") String name);
+    public List<Person> findPersonByName(String name);
 }

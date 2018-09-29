@@ -1,7 +1,7 @@
 package org.orson.mybatis.v1.app.proxy;
 
 import org.orson.mybatis.v1.app.Person;
-import org.orson.mybatis.v1.app.configuration.OrsonConfiguration;
+import org.orson.mybatis.v1.app.configuration.Configuration;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by orson on 2018/9/24.
  */
-public class OrsonMapperProxy implements InvocationHandler {
+public class MapperProxy implements InvocationHandler {
 
 
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -25,9 +25,9 @@ public class OrsonMapperProxy implements InvocationHandler {
     static final String USER = "root";
     static final String PASS = "root";
 
-    private OrsonConfiguration configuration;
+    private Configuration configuration;
 
-    public OrsonMapperProxy(OrsonConfiguration configuration) {
+    public MapperProxy(Configuration configuration) {
         this.configuration = configuration;
     }
 
