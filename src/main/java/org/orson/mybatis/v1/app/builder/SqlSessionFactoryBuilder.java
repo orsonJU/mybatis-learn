@@ -19,7 +19,7 @@ public class SqlSessionFactoryBuilder {
     XMLConfigurationParser configurationParser;
 
     /**
-     * consturctor
+     * constructor
      */
     public SqlSessionFactoryBuilder(XMLConfigurationParser configurationParser) {
         this.configurationParser = configurationParser;

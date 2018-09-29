@@ -25,7 +25,7 @@ public class Dom4jConfigurationParser implements XMLConfigurationParser {
      * initialized parser registry
      */
     static {
-        parserRegistry.put(XMLTag.PROPERTIES.nodeName(), new PropertiesElementParser());
+        parserRegistry.put(XMLTag.PROPERTIES.nodeName(), new PlaceblePropertiesElementParser());
 
     }
 

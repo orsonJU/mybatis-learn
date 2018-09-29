@@ -48,9 +48,9 @@ public class PropertiesElementParser implements ElementParser {
             throw new NullPointerException();
         }
 
-        List<Element> childs = parent.elements();
+        List<Element> children = parent.elements();
         Map<String, String> customizedProp = new HashMap<>();
-        for(Element element : childs) {
+        for(Element element : children) {
             Attribute nameAttr = element.attribute("name");
             Attribute valueAttr = element.attribute("value");
             //put customized property
