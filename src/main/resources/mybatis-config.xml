@@ -9,4 +9,9 @@
         <property name="dailyWork" value="Hello, this is ${username}, and my hoppy is ${hoppy}"/>
         <property name="hoppy" value="${title}"/>
     </properties>
+
+
+    <mappers>
+        <mapper resource="PersonMapper.xml"/>
+    </mappers>
 </configuration>

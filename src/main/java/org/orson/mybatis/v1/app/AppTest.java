@@ -3,8 +3,7 @@ package org.orson.mybatis.v1.app;
 import org.orson.mybatis.v1.app.builder.SqlSessionFactoryBuilder;
 import org.orson.mybatis.v1.app.builder.parser.support.dom4j.Dom4jConfigurationParser;
 import org.orson.mybatis.v1.app.configuration.SqlSessionFactory;
-
-import java.util.Properties;
+import org.orson.mybatis.v1.app.session.SqlSession;
 
 
 /**
@@ -18,8 +17,10 @@ public class AppTest {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder(new Dom4jConfigurationParser());
         SqlSessionFactory sf = builder.build(AppTest.class.getClassLoader().getResourceAsStream("mybatis-config.xml"));
 
-        Properties prop = sf.getConfiguration().getProperties();
+        SqlSession session = sf.openSession();
 
-        System.out.println(prop);
+        Object person = session.selectOne("org.orson.mybatis.v1.app.mapper.PersonMapper.findPersonByName", new Object[]{"Orson"});
+
+        System.out.println(person);
     }
 }
