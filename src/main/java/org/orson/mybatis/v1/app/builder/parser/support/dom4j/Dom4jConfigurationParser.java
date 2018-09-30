@@ -5,6 +5,8 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.orson.mybatis.v1.app.builder.parser.XMLConfigurationParser;
+import org.orson.mybatis.v1.app.builder.parser.support.dom4j.property.PlaceblePropertiesElementParser;
+import org.orson.mybatis.v1.app.builder.parser.support.dom4j.statement.MapperElementParser;
 import org.orson.mybatis.v1.app.configuration.Configuration;
 import org.orson.mybatis.v1.app.xml.XMLTag;
 
@@ -26,7 +28,7 @@ public class Dom4jConfigurationParser implements XMLConfigurationParser {
      */
     static {
         parserRegistry.put(XMLTag.PROPERTIES.nodeName(), new PlaceblePropertiesElementParser());
-
+        parserRegistry.put(XMLTag.MAPPERS.nodeName(), new MapperElementParser());
     }
 
     @Override
@@ -47,8 +49,6 @@ public class Dom4jConfigurationParser implements XMLConfigurationParser {
                 if(parserRegistry.containsKey(element.getName())) {
                     parserRegistry.get(element.getName()).parse(configuration, element);
                 }
-
-
             }
 
 

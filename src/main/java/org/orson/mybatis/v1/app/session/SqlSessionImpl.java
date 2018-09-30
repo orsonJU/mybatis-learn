@@ -2,6 +2,9 @@ package org.orson.mybatis.v1.app.session;
 
 import org.orson.mybatis.v1.app.Person;
 import org.orson.mybatis.v1.app.configuration.Configuration;
+import org.orson.mybatis.v1.app.configuration.MappedStatement;
+import org.orson.mybatis.v1.app.enums.StatementType;
+import org.orson.mybatis.v1.app.parameter.ParameterMapping;
 import org.orson.mybatis.v1.app.proxy.MapperProxy;
 
 import java.lang.reflect.Proxy;
@@ -54,7 +57,22 @@ public class SqlSessionImpl implements SqlSession {
 
     @Override
     public <T> List<T> selectList(String statementId, Object[] arguments) {
-        String boundSQL = configuration.getBoundSQL(statementId);
+        MappedStatement boundStatement = configuration.getBoundStatement(statementId);
+
+        StatementType statementType = boundStatement.getStatementType();
+
+        switch (statementType) {
+            case SELECT:
+                break;
+            case DELETE:
+                break;
+            case UPDATE:
+             break;
+            case INSERT:
+                break;
+            default:
+        }
+
 
         List personList = new ArrayList<>();
         try {
@@ -62,9 +80,25 @@ public class SqlSessionImpl implements SqlSession {
 
             Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
-            PreparedStatement pstat = conn.prepareStatement(boundSQL);
+            String boundSql = boundStatement.getSql();
 
-            pstat.setString(1, String.valueOf(arguments[0]));
+            //resolve parameter
+
+            PreparedStatement pstat = conn.prepareStatement(boundSql);
+
+            List<ParameterMapping> parameterMappings = boundStatement.getParameterMappings();
+
+            for(ParameterMapping parameterMapping : parameterMappings) {
+
+                Class<?> javaType = parameterMapping.getJavaType();
+
+                if(javaType.isAssignableFrom(String.class)) {
+                    pstat.setString(parameterMapping.getIndex(), String.valueOf(arguments[parameterMapping.getIndex() - 1]));
+                }else if(javaType.isAssignableFrom(Integer.class)) {
+                    pstat.setInt(parameterMapping.getIndex(), Integer.valueOf(String.valueOf(arguments[parameterMapping.getIndex() - 1])));
+                }
+
+            }
 
             ResultSet rs = pstat.executeQuery();
 

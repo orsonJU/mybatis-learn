@@ -12,5 +12,9 @@
         SELECT id, name, age from person where name = #{name}
     </select>
 
+    <select id="findPersonByAge" resultMap="person">
+        select id, name, age from Person where age = #{age}
+    </select>
+
 
 </mapper>

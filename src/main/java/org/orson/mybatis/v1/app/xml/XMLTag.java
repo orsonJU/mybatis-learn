@@ -6,7 +6,7 @@ package org.orson.mybatis.v1.app.xml;
 public enum XMLTag {
 
 
-    CONFIGURATION("configuration"), PROPERTIES("properties");
+    CONFIGURATION("configuration"), PROPERTIES("properties"), MAPPERS("mappers");
 
 
     /**

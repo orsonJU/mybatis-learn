@@ -1,4 +1,4 @@
-package org.orson.mybatis.v1.app.builder.parser.support.dom4j;
+package org.orson.mybatis.v1.app.builder.parser.support.dom4j.property;
 
 import org.dom4j.Element;
 import org.orson.mybatis.v1.app.builder.parser.reslover.PropertiesResolver;

@@ -1,7 +1,8 @@
-package org.orson.mybatis.v1.app.builder.parser.support.dom4j;
+package org.orson.mybatis.v1.app.builder.parser.support.dom4j.property;
 
 import org.dom4j.Attribute;
 import org.dom4j.Element;
+import org.orson.mybatis.v1.app.builder.parser.support.dom4j.ElementParser;
 import org.orson.mybatis.v1.app.configuration.Configuration;
 
 import java.io.IOException;

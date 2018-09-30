@@ -5,6 +5,8 @@ import org.orson.mybatis.v1.app.builder.parser.support.dom4j.Dom4jConfigurationP
 import org.orson.mybatis.v1.app.configuration.SqlSessionFactory;
 import org.orson.mybatis.v1.app.session.SqlSession;
 
+import java.util.List;
+
 
 /**
  * Created by orson on 2018/9/24.
@@ -22,5 +24,11 @@ public class AppTest {
         Object person = session.selectOne("org.orson.mybatis.v1.app.mapper.PersonMapper.findPersonByName", new Object[]{"Orson"});
 
         System.out.println(person);
+
+        List<Object> personList = session.selectList("org.orson.mybatis.v1.app.mapper.PersonMapper.findPersonByAge", new Object[]{23});
+
+        System.out.println(personList);
+
+
     }
 }
